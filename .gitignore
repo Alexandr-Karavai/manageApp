@@ -6,3 +6,5 @@ node_modules/
 *.map
 
 app/*.js
+
+package-lock\.json
