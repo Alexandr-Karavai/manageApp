@@ -30,7 +30,7 @@ body {
 
 h1, h2, h3, h4, h5 ,h6 {
   font-weight: 400;
-  color: #fbfcda;
+  color: #000000;
 }
 
 p {
@@ -44,4 +44,21 @@ p {
 
 .navbar > .container > .nav > li {
   padding-right: 10px;
+}
+
+#user {
+  background: url(../user.png) no-repeat;
+  margin-top: 30px;
+  padding-top: 20px;
+  height: 350px;
+  width: 300px;
+  background-size: 100%;
+}
+
+.container > .row > .col-md-4 {
+  padding-top: 15px;
+}
+
+#editContainer {
+  margin-top: 30px;
 }
