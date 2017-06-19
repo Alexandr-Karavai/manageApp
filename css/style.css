@@ -62,3 +62,40 @@ p {
 #editContainer {
   margin-top: 30px;
 }
+
+.navbar > .container > .nav > li > button > a {
+  text-decoration: none;
+  color: #fefefe;
+}
+
+.navbar-fixed-bottom {
+  padding: 20px 0 10px 0;
+  background: #009688;
+  color: #fbfcda;
+}
+
+.navbar-fixed-bottom > .container > .row > .col-md-4 > span > i {
+  padding: 10px 0;
+}
+
+#main {
+  padding-bottom: 70px;
+}
+
+#main > .container > .row > .col-md-3 {
+  padding-bottom: 15px;
+}
+
+.container > .panel {
+  margin-bottom: 150px;
+}
+
+.container > .page-header {
+  position: relative;
+}
+
+.container > .page-header > button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
