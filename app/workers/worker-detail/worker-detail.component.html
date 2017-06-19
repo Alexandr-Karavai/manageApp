@@ -1,0 +1,20 @@
+<div class="container" *ngIf="worker">
+<div class="page-header">
+    <h1>Сотрудник c ID: {{ worker.id }}</h1>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-2" id="user"></div>
+  <div class="col-md-4">
+    <h3>ID: {{ worker.id }}</h3>
+    <h3>Имя: {{ worker.name }}</h3>
+    <h3>Отчество: {{ worker.subname }}</h3>
+    <h3>Фамилия: {{ worker.surname }}</h3>
+    <h3>Возраст: {{ worker.age }}</h3>
+    <h3>Должность: {{ worker.position }}</h3>
+  </div>
+  </div>
+    <div class="text-center">
+      <button class="btn btn-primary" (click)="gotoWorkers()">Назад</button>
+      <button class="btn btn-success" (click)="editWorkers()">Редактировать</button>
+    </div>
+</div>
