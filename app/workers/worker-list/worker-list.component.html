@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="page-header">
+      <h1>Сотрудники компании</h1>
+      <button type="button" class="btn btn-success navbar-btn btn-md" (click)="add();">
+        <i class="fa fa-user-plus fa-lg" aria-hidden="true"></i> Добавить</button>
+  </div>
+  <div class="panel">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Имя</th>
+                  <th>Фамилия</th>
+                  <th>Должность</th>
+                  <th>Удаление</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let worker of workers">
+                  <td><button type="button" class="btn btn-info"
+                  (click)="onSelect(worker)"
+                  [class.selected]="worker === selectedWorker">
+                  {{worker.id}}</button>
+                  </td>
+                  <td>{{worker.name}}</td>
+                  <td>{{worker.surname}}</td>
+                  <td>{{worker.position}}</td>
+                  <td><button class="btn btn-danger" (click)="delete(worker); $event.stopPropagation()"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+</div>
