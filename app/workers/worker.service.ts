@@ -1,34 +1,59 @@
-import { Injectable } from '@angular/core';
+import { Injectable }    from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 export class Worker {
-  constructor(
-    public id: number,
-    public name: string,
-    public subname: string,
-    public surname: string,
-    public age: number,
-    public position: string)
-    { }
+  id: number;
+  name: string;
+  subname: string;
+  surname: string;
+  age: number;
+  position: string;
 }
-
-export var WORKERS: Worker[] =
- [
-  new Worker(1, 'Иван1', 'Сергеевич', 'Петров', 28, 'Manager'),
-  new Worker(2, 'Иван2', 'Сергеевич', 'Петров', 28, 'Manager'),
-  new Worker(3, 'Иван3', 'Сергеевич', 'Петров', 28, 'Manager'),
-  new Worker(4, 'Иван4', 'Сергеевич', 'Петров', 28, 'Manager'),
-  new Worker(5, 'Иван5', 'Сергеевич', 'Петров', 28, 'Manager'),
-  new Worker(6, 'Иван6', 'Сергеевич', 'Петров', 28, 'Manager')
-];
-
-let workersPromise = Promise.resolve(WORKERS);
 
 @Injectable()
 export class WorkerService {
-  getWorkers() { return WORKERS; }
 
-  getWorker(id: number | string) {
-    return workersPromise
-      .then(workers => workers.find(Worker => Worker.id === +id));
+  private headers = new Headers({'Content-Type': 'application/json'});
+  private workersUrl = 'app/workers';  // URL to web api
+
+  constructor(private http: Http) { }
+
+  getWorkers(): Promise<Worker[]> {
+    return this.http.get(this.workersUrl)
+               .toPromise()
+               .then(response => response.json().data as Worker[])
+               .catch(this.handleError);
+  }
+
+  getWorker(id: number): Promise<Worker> {
+    const url = `${this.workersUrl}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json().data as Worker)
+      .catch(this.handleError);
+  }
+
+  delete(id: number): Promise<void> {
+    const url = `${this.workersUrl}/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
+
+  update(worker: Worker): Promise<Worker> {
+    const url = `${this.workersUrl}/${worker.id}`;
+    return this.http
+      .put(url, JSON.stringify(worker), {headers: this.headers})
+      .toPromise()
+      .then(() => worker)
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }

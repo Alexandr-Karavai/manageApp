@@ -1,13 +1,15 @@
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
-import { FormsModule }    from '@angular/forms';
+import { NgModule }                 from '@angular/core';
+import { CommonModule }             from '@angular/common';
+import { FormsModule }              from '@angular/forms';
 
-import { WorkerListComponent }    from './worker-list.component';
-import { WorkerDetailComponent }  from './worker-detail.component';
+import { WorkerListComponent }      from './worker-list/worker-list.component';
+import { WorkerDetailComponent }    from './worker-detail/worker-detail.component';
+import { WorkerEditComponent }      from './edit/worker-edit.component';
+import { NewWorkerComponent }       from './new-worker/new-worker.component';
 
-import { WorkerService } from './worker.service';
+import { WorkerService }            from './worker.service';
 
-import { WorkerRoutingModule } from './workers-routing.module';
+import { WorkerRoutingModule }      from './workers-routing.module';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { WorkerRoutingModule } from './workers-routing.module';
   ],
   declarations: [
     WorkerListComponent,
-    WorkerDetailComponent
+    WorkerDetailComponent,
+    WorkerEditComponent,
+    NewWorkerComponent
   ],
   providers: [ WorkerService ]
 })
