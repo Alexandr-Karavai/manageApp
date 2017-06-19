@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
   {
-    path: 'workers',
-    loadChildren: 'app/workers/workers.module#WorkersModule',
+    path: 'login',
+    loadChildren: 'app/login-form/login-form.module#LoginFormModule',
     data: { preload: true }
   },
-  { path: '',   redirectTo: '/workers', pathMatch: 'full' }
+  { path: '',   redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
