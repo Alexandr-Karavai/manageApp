@@ -8,5 +8,10 @@ node_modules/
 app/*.js
 
 app/workers/*.js
+app/login-form/*.js
+app/workers/edit/*.js
+app/workers/new-worker/*.js
+app/workers/worker-detail/*.js
+app/workers/worker-list/*.js
 
 package-lock\.json
